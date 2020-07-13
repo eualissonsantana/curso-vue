@@ -1,0 +1,24 @@
+.barra-progresso {
+    width: 450px;
+    border: 1px solid gray;
+    height: 27px;
+}
+
+.progresso {
+    background-color: #14a133;
+    height: 100%;
+}
+
+.btn {
+    color: #fff !important;
+    width: 200px;
+    margin: 0 20px;
+}
+
+.btn-new {
+    background-color: rgb(50, 80, 149) !important;
+}
+
+.danger {
+    background-color: rgb(185, 11, 11);
+}

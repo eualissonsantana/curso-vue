@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>O Matador de Monstros</title>
+</head>
+<body>
+    <section id="jogo">
+        <section class="row m-5 p-5 shadow text-center justify-content-around" id="area-jogador">
+            <article class="player col-5 text-center">
+                <h3>Jogador</h3>
+                <div class="barra-progresso">
+                    <div :class="{danger: porcentJogador < 20}" :style="{width: porcentJogador + '%'}" class="progresso"></div>
+                </div>
+                <div class="porcentagem mt-2">{{ porcentJogador }}%</div>
+            </article>
+
+            <article class="player col-5 text-center">
+                <h3>Monstro</h3>
+                <div class="barra-progresso">
+                    <div :class="{danger: porcentMonstro < 20}" :style="{width: porcentMonstro + '%'}" class="progresso"></div>
+                </div>
+                <div class="porcentagem mt-2">{{porcentMonstro}}%</div>
+            </article>
+        </section>
+        <section v-if="hasResult" class="shadom p-5 m-5 text-center">
+            <article v-if="porcentMonstro == 0">
+                <h3>Você ganhou!</h3>
+            </article>
+            <article v-else>
+                <h3>Você perdeu!</h3>
+            </article>
+        </section>
+        <section class="m-5 p-5 shadow text-center" id="botoes">
+            <template v-if="rodando">
+                <button @click="ataque(false)" class="btn btn-danger" id="btn-ataque">ATAQUE</button>
+                <button @click="ataque(true)" class="btn btn-warning" id="btn-especial">ATAQUE ESPECIAL</button>
+                <button class="btn btn-success" id="btn-curar">CURAR</button>
+                <button @click="rodando = false" class="btn btn-secondary" id="btn-desistir">DESISTIR</button>
+            </template>
+            
+            <button v-else @click="iniciarJogo" class="btn btn-new" id="btn-iniciar">INCIAR JOGO</button>
+        </section>
+
+        <section class="shadow m-5 p-5" id="lista-log">
+
+        </section>
+    </section>
+</body>
+</html>
+<script src="app.js"></script>
+
