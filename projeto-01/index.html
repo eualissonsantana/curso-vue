@@ -39,14 +39,17 @@
             <template v-if="rodando">
                 <button @click="ataque(false)" class="btn btn-danger" id="btn-ataque">ATAQUE</button>
                 <button @click="ataque(true)" class="btn btn-warning" id="btn-especial">ATAQUE ESPECIAL</button>
-                <button class="btn btn-success" id="btn-curar">CURAR</button>
+                <button @click="curaEAtaca" class="btn btn-success" id="btn-curar">CURAR</button>
                 <button @click="rodando = false" class="btn btn-secondary" id="btn-desistir">DESISTIR</button>
             </template>
             
-            <button v-else @click="iniciarJogo" class="btn btn-new" id="btn-iniciar">INCIAR JOGO</button>
+            <button v-else @click="iniciarJogo" class="btn btn-new" id="btn-iniciar">INICIAR JOGO</button>
         </section>
 
-        <section class="shadow m-5 p-5" id="lista-log">
+        <section v-if="logs.length" class="shadow m-5 p-5 logs" id="lista-log">
+            <ul>
+                <li v-for="log in logs" :class="log.cls" class="log">{{log.text}}</li>
+            </ul>
 
         </section>
     </section>

@@ -22,3 +22,31 @@
 .danger {
     background-color: rgb(185, 11, 11);
 }
+
+.logs ul {
+    display: flex !important;
+    flex-direction: column !important;
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.logs ul li {
+    display: flex;
+    justify-content: center;
+    margin: 4px 0px;
+    padding: 3px 0px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+}
+
+.jogador {
+    background-color: #4253afaa;
+    color: #fff;
+}
+
+.monstro {
+    background-color: #e51c23aa;
+    color: #fff;
+}
