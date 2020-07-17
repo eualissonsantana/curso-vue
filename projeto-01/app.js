@@ -38,7 +38,7 @@ new Vue({
         },
         curaEAtaca() {
             this.curar(10, 15)
-            this.ataque('porcentJogador', 7, 12, false, 'Monstro', 'Jogador', 'monstro')
+            this.dano('porcentJogador', 7, 12, false, 'Monstro', 'Jogador', 'monstro')
         },
         curar(min, max) {
             const cura = this.geraNumero(min, max)
