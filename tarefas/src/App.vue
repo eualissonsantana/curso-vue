@@ -1,19 +1,37 @@
 <template>
 	<div id="app">
 		<h1>Tarefas</h1>
-		<Barra/>
-		<Entrada/>
-		<Tarefas/>
+		<NewTask @taskAdded="addTask"/>
+		<TaskGrid :tasks="tasks"/>
 	</div>
 </template>
 
 <script>
-import Barra from './components/Barra'
-import Entrada from './components/Entrada'
-import Tarefas from './components/Tarefas'
+import TaskGrid from './components/TaskGrid'
+import NewTask from './components/NewTask'
 
 export default {
-	components: {Barra, Entrada, Tarefas}
+	components: {TaskGrid, NewTask},
+	data() {
+		return {
+			tasks: [
+				{name: 'Lavar louça', pedding: false},
+				{name: 'Comprar Blusa', pedding: true},
+			]
+		}
+	},
+	methods: {
+		addTask(task) {
+			const sameName = t => t.name === task.name
+			const reallyNew = this.tasks.filter(sameName).length == 0
+			if(reallyNew) {
+				this.tasks.push({
+					name: task.name,
+					pedding: task.pedding || true
+				})
+			}
+		}
+	}
 }
 </script>
 
